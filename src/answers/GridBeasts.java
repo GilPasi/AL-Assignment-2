@@ -2,6 +2,7 @@ package answers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class GridBeasts {
 	
@@ -9,9 +10,20 @@ public class GridBeasts {
 	/*The key is the actual structure of the beast, a 3D array.
 	 * The value is an array of the the anchor's coordinations.*/
 	
-	public static void findAllBeasts(int size) {
-		ArrayList<ArrayList<Integer>> allFactors = factorize(size);
+	public static void findAllBeasts(int size , int [][][] array) {
+		ArrayList<ArrayList<Integer>> factorsPartitions = factorize(size);
 		
+		for(int i = 0 ; i < factorsPartitions.size() ; i++)
+			findBeast(array,
+					factorsPartitions.get(i).get(0),
+					factorsPartitions.get(i).get(1), 
+					factorsPartitions.get(i).get(2));
+		
+		System.out.println("The grid beasts in size 3 are: " );
+			for (Map.Entry<String, ArrayList<String>> entry : foundBeasts.entrySet()) {
+				if(entry.getValue().size() > 1)
+					System.out.println("Beast: " + entry.getKey() + "Anchors: " + entry.getValue());
+			}		
 		
 	}
 	
@@ -23,18 +35,11 @@ public class GridBeasts {
 		
 		for(int i = 0; i < array.length - DEP + 1; i++) {
 			for(int j = 0; j < array[0].length - HGT + 1; j++) {
-				for(int k = 0; k < array[0][0].length - WDT + 1; k++) {
-					
-		//========================================================								
-//					if(compare(array, new int[] {i,j,k}, beast)) {
+				for(int k = 0; k < array[0][0].length - WDT + 1; k++) {		
 
 					int [][][] currentForm = slice(DEP,HGT,WDT,new int[]{i,j,k} ,array);
 					putBeast(currentForm, "" + i + j + k);
-						
-//						System.out.println("animal anchor in " + i + "/" + j + "/" + k);
-//					}
 		
-		//========================================================			
 				}
 			}
 		}
@@ -78,27 +83,6 @@ public class GridBeasts {
 				a1.charAt(1) + HGT > a2.charAt(1)
 							&&
 				a1.charAt(2) + WDT > a2.charAt(2)); 
-	}
-	
-	public static boolean compare(int [][][] grid , int[] a , int [][][] beast ) {
-		/*This function scans  a given grid beast and compare each element of it with a given grid.
-		 *Since the grid is larger then the animal, it will scan only from a given anchor  */
-		final int bDepth = beast.length;
-		final int bHeight = beast[0].length;
-		final int bWidth = beast[0][0].length;
-				
-		for(int i = 0; i <bDepth; i++) {
-			for(int j = 0; j < bHeight; j++) {
-				for(int k = 0; k < bWidth; k++) {
-					if (grid[a[0] + i][a[1] + j][a[2] + k] != beast[i][j][k])
-						return false;
-					
-					
-				}
-			}
-		}
-		
-	return true;
 	}
 	
 	public static int [][][] slice(final int D , final int H , final int W , int [] a , int [][][] grid){
