@@ -5,7 +5,9 @@ public class Runner {
 	public static void main ( String [] args ) {
 //		String path = Algorithms.findHeightsSequence(10, 2 ,4 );
 //		System.out.println(path);
-//		Algorithms.dropSpaceVehicle(4, 200);
+		SpaceVehicleDrop.heightSequence(100, 3 , 90);
+		
+//		SpaceVehicleDrop.leastTries(4, 200);
 		
 		
 		
@@ -33,8 +35,8 @@ public class Runner {
 				{5,2,3,4},
 				{25,26,27,9},}
 		};		
-		GridBeasts.print3D(grid);
-		GridBeasts.findAllBeasts(3 , grid);
+//		GridBeasts.print3D(grid);
+//		GridBeasts.findAllBeasts(3, grid);
 			
 	}
 }
