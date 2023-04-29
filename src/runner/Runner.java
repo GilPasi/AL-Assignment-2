@@ -3,16 +3,13 @@ package runner;
 import  answers.*;
 public class Runner {
 	public static void main ( String [] args ) {
-//		String path = Algorithms.findHeightsSequence(10, 2 ,4 );
-//		System.out.println(path);
+		//Task 1 - space-vehicle drops
 		SpaceVehicleDrop.heightSequence(100, 3 , 90);
 		
-//		SpaceVehicleDrop.leastTries(4, 200);
 		
 		
 		
 		//Task 3 - grid beasts
-		//Example
 		int[][][] grid = {
 				
 				{{1,2,3,4},
@@ -35,8 +32,8 @@ public class Runner {
 				{5,2,3,4},
 				{25,26,27,9},}
 		};		
-//		GridBeasts.print3D(grid);
-//		GridBeasts.findAllBeasts(3, grid);
+		GridBeasts.print3D(grid);
+		GridBeasts.findAllBeasts(3, grid);
 			
 	}
 }

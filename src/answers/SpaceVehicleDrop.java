@@ -36,30 +36,35 @@ public class SpaceVehicleDrop {
 			rows ++;
 		}
 		
-		System.out.println(heightsTable);
+		System.out.println("Pascal Triangle " + heightsTable + "\n");
 		
 		//Now backtrack
 		
-		int dropHeight = 0;
+		int lowBound = 0;
 		int r = heightsTable.size() - 1 , c = heightsTable.get(0).size() - 1;
 		
 		while (r >= 0) {
 			
-			int currentHeight = dropHeight + heightsTable.get(r).get(c);
-			System.out.println(currentHeight);
+			int testHeight = lowBound + heightsTable.get(r).get(c);
 			
-			if(currentHeight == G)return;
+			System.out.println(testHeight);
 			
-			if(currentHeight < G) {
-				dropHeight = Math.min(currentHeight , H);
+			
+			if(testHeight == G)return;
+			
+			if(testHeight < G) {
+				lowBound = Math.min(testHeight , H);//Egg didn't break , lower bound increased
 				--c;
 			}
 			else {
 				System.out.println("Egg broke! there are " + r + " eggs left" );
 				--r;
-				c = -1;
-				sum = currentHeight - dropHeight;
+				
+				c = -1; //Avoid bound problems
+				sum = testHeight - lowBound;
 				int subSum = 0;
+				
+				//Find new c 
 				while(subSum < sum) {
 					c++;
 					subSum += heightsTable.get(r).get(c);
