@@ -19,7 +19,8 @@ public class GridBeasts {
 					factorsPartitions.get(i).get(1), 
 					factorsPartitions.get(i).get(2));
 		
-		System.out.println("The grid beasts in size 3 are: " );
+		
+		System.out.println("The grid beasts in size " + size + " are:" );
 			for (Map.Entry<String, ArrayList<String>> entry : foundBeasts.entrySet()) {
 				if(entry.getValue().size() > 1)
 					System.out.println("Beast: " + entry.getKey() + "Anchors: " + entry.getValue());
@@ -67,7 +68,6 @@ public class GridBeasts {
 		} 
 				
 	}
-	
 	public static boolean areOverlapping (String a1 , String a2 , int [][][] beast) {
 		/*This function checks if there are any overlapping parts between two different anchors
 		 * with the same beast type.*/
@@ -97,6 +97,8 @@ public class GridBeasts {
 		}
 		return ret;
 	}
+	
+
 	
 	
 	public static String stringfyArray (int [][][] arr) {
@@ -134,7 +136,7 @@ public class GridBeasts {
 				}
 				System.out.println();
 			}
-			System.out.println("============================");
+			System.out.println("----------------------------------");
 		}
 	}
 	

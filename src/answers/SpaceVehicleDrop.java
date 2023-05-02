@@ -23,6 +23,7 @@ public class SpaceVehicleDrop {
 
 		int sum = 0 ;
 		
+		
 		while(sum < H) {
 			baseRow.add(DEF);
 			
@@ -43,6 +44,8 @@ public class SpaceVehicleDrop {
 		int lowBound = 0;
 		int r = heightsTable.size() - 1 , c = heightsTable.get(0).size() - 1;
 		
+		System.out.println("The heights sequence is :");
+
 		while (r >= 0) {
 			
 			int testHeight = lowBound + heightsTable.get(r).get(c);
